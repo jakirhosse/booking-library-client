@@ -13,12 +13,12 @@ import DashboardTop from "../pages/shared/DashboardTop/DashboardTop";
 
 const LernlingLayout = () => {
   return (
-    <div className="drawer lg:drawer-open ">
+    <div className=" mx-auto drawer lg:drawer-open  ">
       {/*background blur color */}
 
       <div className=" -inset-x-1 inset-y-16 md:-inset-x-2 md:-inset-y-6">
         <div
-          className="w-full h-full max-w-5xl mx-auto rounded-3xl opacity-10 blur-lg filter"
+          className="w-1/2 h-full max-w-5xl mx-0 rounded-3xl opacity-10 blur-lg filter"
           style={{
             background:
               "linear-gradient(90deg, #44ff9a -0.55%, #44b0ff 22.86%, #8b44ff 48.36%, #ff6644 73.33%, #ebff70 99.34%)",
@@ -26,17 +26,8 @@ const LernlingLayout = () => {
         ></div>
       </div>
 
-      <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content">
-        {/* Page content here */}
-        <label
-          htmlFor="my-drawer-2"
-          className="btn btn-primary drawer-button lg:hidden"
-        >
-          <HiOutlineMenu style={{ fontSize: "20px" }} />
-        </label>
-        <Outlet></Outlet>
-      </div>
+      {/* <input id="my-drawer-2" type="checkbox" className="drawer-toggle" /> */}
+      <div className="flex ">
       <div className="drawer-side">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
         {/* <ul className="w-64 bg-gradient-to-b h-screen  from-[#0A4D68] to-[#088395] text-white py-3"> */}
@@ -166,6 +157,17 @@ const LernlingLayout = () => {
             </NavLink>
           </li>
         </ul>
+      </div>
+      <div className="drawer-content">
+        {/* Page content here */}
+        <label
+          htmlFor="my-drawer-2"
+          className="btn btn-primary drawer-button lg:hidden"
+        >
+          <HiOutlineMenu style={{ fontSize: "20px" }} />
+        </label>
+        <Outlet></Outlet>
+      </div>
       </div>
     </div>
   );

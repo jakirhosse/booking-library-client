@@ -9,6 +9,12 @@ import SingleBlogCard from "../pages/Blogs/SingleBlogCard";
 import Blogs from "../pages/Blogs/Blogs";
 import LernlingLayout from "../Layouts/LernlingLayout";
 import AdminDashboardLayout from "../Layouts/AdminDashboardLayout";
+import Learning from "../pages/UserDashboard/Learning/Learning";
+import LearnLesson from "../pages/UserDashboard/LearnLesson/LearnLesson";
+import LeaderBoard from "../pages/UserDashboard/LeaderBoard/LeaderBoard";
+import QuizLevel from "../pages/UserDashboard/Quiz/QuizLevel";
+import Quizzes from "../pages/UserDashboard/Quiz/Quizzes";
+import Grammar from "../pages/UserDashboard/Grammer/Grammar";
 
 
 const router = createBrowserRouter ([
@@ -45,9 +51,7 @@ const router = createBrowserRouter ([
                         path:"/blog",
                         element:<Blogs></Blogs>
                 }
-
         ]
-        
      },
 
       // user dashborad  \\\------------------------------  
@@ -59,8 +63,42 @@ const router = createBrowserRouter ([
         children:[
                 {
                       path:"learning",
-                    
-                }
+                      element:(
+                        <Learning></Learning>
+                      ),
+                },
+                {
+                        path:"learning/:id",
+                        element:(
+                                <LearnLesson></LearnLesson>
+                        )
+                },
+                {
+                        path: "leader-board",
+                       element:(
+                        <LeaderBoard></LeaderBoard>
+                       )
+                      },
+
+                      {
+                        path: "quiz",
+                        element: (
+                          <QuizLevel></QuizLevel>
+                        ),
+                      },
+                      {
+                        path: "mainquiz/:id",
+                        element: <Quizzes></Quizzes>,
+                        loader: ({ params }) =>
+                          fetch(`http://localhost:5000/quizs/quizs/${params.id}`)
+                      },
+
+                      {
+                        path: "grammar",
+                        element: (
+                         <Grammar></Grammar>
+                        ),
+                      },
         ]
        },
  
