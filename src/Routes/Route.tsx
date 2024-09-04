@@ -15,6 +15,7 @@ import LeaderBoard from "../pages/UserDashboard/LeaderBoard/LeaderBoard";
 import QuizLevel from "../pages/UserDashboard/Quiz/QuizLevel";
 import Quizzes from "../pages/UserDashboard/Quiz/Quizzes";
 import Grammar from "../pages/UserDashboard/Grammer/Grammar";
+import Books from "../pages/UserDashboard/Books/Books";
 
 
 const router = createBrowserRouter ([
@@ -97,6 +98,13 @@ const router = createBrowserRouter ([
                         path: "grammar",
                         element: (
                          <Grammar></Grammar>
+                        ),
+                      },
+
+                      {
+                        path: "books-buy",
+                        element: (
+                        <Books></Books>
                         ),
                       },
         ]
