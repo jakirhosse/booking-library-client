@@ -16,6 +16,8 @@ import QuizLevel from "../pages/UserDashboard/Quiz/QuizLevel";
 import Quizzes from "../pages/UserDashboard/Quiz/Quizzes";
 import Grammar from "../pages/UserDashboard/Grammer/Grammar";
 import Books from "../pages/UserDashboard/Books/Books";
+import BoughtBooks from "../pages/UserDashboard/BoughtBooks/BoughtBooks";
+import Shop from "../pages/UserDashboard/Shop/Shop";
 
 
 const router = createBrowserRouter ([
@@ -105,6 +107,19 @@ const router = createBrowserRouter ([
                         path: "books-buy",
                         element: (
                         <Books></Books>
+                        ),
+                      },
+
+                      {
+                        path: "bought-books",
+                        element: (
+                       <BoughtBooks></BoughtBooks>
+                        ),
+                      },
+                      {
+                        path: "shop",
+                        element: (
+                      <Shop></Shop>
                         ),
                       },
         ]

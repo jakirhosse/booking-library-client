@@ -1,24 +1,23 @@
-import { useLocation } from "react-router-dom";
-import useAxiosSecure from "../../../Hook/useAxiosSecure";
 import { useEffect, useState } from "react";
-import SingleBooks from "./SingleBooks";
+import useAxiosSecure from "../../../Hook/useAxiosSecure";
+import { useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import LazyLoder from "../../../Components/LazyLoder/LazyLoder";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
+import SingleBook from "./SingleBook";
 
-type Book = {
-        id: number;
-        bookname: string;
-        bookimage: string;
-        writer: string;
-        price: number;
-        rating: number;
-        description: string;
-        status: string;
-      };
-const Books:any = () => {
 
-        const location = useLocation();
+interface Book {
+  id: number;
+  bookname: string;
+  bookimage: string;
+  writer: string;
+  price: number;
+  rating: number;
+}
+
+const Books = () => {
+  const location = useLocation();
   const [axiosSecure] = useAxiosSecure();
   const [books, setBooks] = useState<Book[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -26,49 +25,50 @@ const Books:any = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
   const handleSearchInputChange = (e: any) => {
-        setSearchQuery(e.target.value);
-      };
-    
-      const handleEditButtonClick = (book: Book) => {
-        setSelectedBook(book);
-        setIsModalOpen(true);
-      };
-    
-      const handleModalClose = () => {
-        setSelectedBook(null); // Clear the selected book
-        setIsModalOpen(false);
-      };
-    
-      useEffect(() => {
-        axiosSecure
-          .get("/books/book")
-          .then((res) => {
-            setBooks(res.data); // Update state with the response data
-          })
-          .catch((error) => {
-            console.error(error);
-          });
-      }, [axiosSecure]);
-    
-      const filteredBooks = books.filter((book) => {
-        return (
-          book.bookname?.toLowerCase().includes(searchQuery?.toLowerCase()) ||
-          book.writer?.toLowerCase().includes(searchQuery?.toLowerCase())
-        );
+    setSearchQuery(e.target.value);
+  };
+
+  const handleEditButtonClick = (book: Book) => {
+    setSelectedBook(book);
+    setIsModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setSelectedBook(null); // Clear the selected book
+    setIsModalOpen(false);
+  };
+
+  useEffect(() => {
+    axiosSecure
+      .get("/books/book")
+      .then((res) => {
+        setBooks(res.data); // Update state with the response data
+      })
+      .catch((error) => {
+        console.error(error);
       });
-    
-      const showAllBooks = location.pathname === "/user-dashboard/books";
-        return (
-                <>
+  }, [axiosSecure]);
+
+  const filteredBooks = books.filter((book) => {
+    return (
+      book.bookname?.toLowerCase().includes(searchQuery?.toLowerCase()) ||
+      book.writer?.toLowerCase().includes(searchQuery?.toLowerCase())
+    );
+  });
+
+  const showAllBooks = location.pathname === "/user-dashboard/books";
+
+  return (
+    <>
       <Helmet>
         <title> Book Library | Lang Master </title>
       </Helmet>
       {books.length <= 0 ? (
-       <LazyLoder></LazyLoder>
+        <LazyLoder />
       ) : (
         <div className="px-4 py-8 md:px-20 md:py-16 mx-auto">
           <div className="flex flex-col items-center">
-           <SectionTitle titleLetter="book " titleWord="book"></SectionTitle>
+            <SectionTitle titleLetter="Language  " titleWord="Library" />
             {/* search bar  */}
             <div className="mt-4 md:flex p-4 md:space-x-6 bg-white rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-500">
               <div className="flex md:mb-0 mb-2 bg-gray-100 p-4 md:w-72 space-x-4 rounded-lg">
@@ -102,7 +102,7 @@ const Books:any = () => {
               <p>No data found</p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4  mt-8">
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4 mt-8">
               {filteredBooks
                 .slice(0, showAllBooks ? filteredBooks.length : 8)
                 .map((book: any) => (
@@ -128,48 +128,29 @@ const Books:any = () => {
                       </span>
                       <div className="flex flex-col justify-center items-center absolute inset-0">
                         <h3 className="text-lg font-medium">{book.bookname}</h3>
-                        <h3 className="mt-2 font-medium">
-                          Writer: {book.writer}
-                        </h3>
-                        <div className="flex items-center">
-                          {/* Add Rating component here */}
-                        </div>
+                        <h3 className="mt-2 font-medium">Writer: {book.writer}</h3>
                         <p className="mt-2 text-sm">
                           <b>Price:</b>{" "}
                           <span className="text-green-500 font-semibold">
                             {book.price} Coin
                           </span>
                         </p>
-
-                        {/* buy now btn  */}
-                        {/* <form className="mt-4">
-                    <button
-                      onClick={(e) => {
-                        e.preventDefault();
-                        handleEditButtonClick(book);
-                      }}
-                      className="block w-full rounded bg-yellow-400 p-3 text-sm font-medium transition hover:scale-105"
-                    >
-                      Buy Now
-                    </button>
-                  </form> */}
                       </div>
                     </div>
                   </div>
                 ))}
-
-              {/* // modal open after click on a book  */}
+              {/* Modal open after clicking on a book */}
               {isModalOpen && selectedBook && (
-                <SingleBooks key={selectedBook.bookimage}
-                selectedBook={selectedBook}
-                handleModalClose={handleModalClose}></SingleBooks>
+               <SingleBook   key={selectedBook.bookimage}
+               selectedBook={selectedBook}
+               handleModalClose={handleModalClose}></SingleBook>
               )}
             </div>
           )}
         </div>
       )}
     </>
-        );
+  );
 };
 
 export default Books;
