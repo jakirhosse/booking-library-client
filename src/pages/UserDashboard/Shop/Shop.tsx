@@ -1,8 +1,9 @@
+import CoinBuy from "./CoinBuy";
 
 const Shop = () => {
         return (
                 <div>
-                     <h2>dfkngytrue</h2>   
+                    <CoinBuy></CoinBuy>  
                 </div>
         );
 };

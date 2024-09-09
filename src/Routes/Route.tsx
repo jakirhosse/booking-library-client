@@ -18,6 +18,7 @@ import Grammar from "../pages/UserDashboard/Grammer/Grammar";
 import Books from "../pages/UserDashboard/Books/Books";
 import BoughtBooks from "../pages/UserDashboard/BoughtBooks/BoughtBooks";
 import Shop from "../pages/UserDashboard/Shop/Shop";
+import Profile from "../pages/UserDashboard/Profile/Profile";
 
 
 const router = createBrowserRouter ([
@@ -116,10 +117,24 @@ const router = createBrowserRouter ([
                        <BoughtBooks></BoughtBooks>
                         ),
                       },
-                      {
+                      { 
                         path: "shop",
                         element: (
                       <Shop></Shop>
+                        ),
+                      },
+
+                      {    
+                        path: "coin-buy",
+                        element: (
+                      <Shop></Shop>
+                        ),
+                      },
+
+                      {    
+                        path: "profile",
+                        element: (
+                    <Profile></Profile>
                         ),
                       },
         ]
