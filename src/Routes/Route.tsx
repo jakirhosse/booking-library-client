@@ -19,6 +19,9 @@ import Books from "../pages/UserDashboard/Books/Books";
 import BoughtBooks from "../pages/UserDashboard/BoughtBooks/BoughtBooks";
 import Shop from "../pages/UserDashboard/Shop/Shop";
 import Profile from "../pages/UserDashboard/Profile/Profile";
+import Statistics from "../pages/AdminDashboard/Statistics/Statistics";
+import UserManage from "../pages/AdminDashboard/UserManage/UserManage";
+import AddUnit from "../pages/AdminDashboard/AddUnit/AddUnit";
 
 
 const router = createBrowserRouter ([
@@ -151,7 +154,22 @@ const router = createBrowserRouter ([
         children: [
           {
             path: "statistics",
-         
+         element:(
+          <Statistics></Statistics>
+         )
+          },
+
+          {
+            path: "user-manage",
+            element: (
+             <UserManage></UserManage>
+            ),
+          },
+          {
+            path: "add-unit",
+            element: (
+            <AddUnit></AddUnit>
+            ),
           },
         ]
         }

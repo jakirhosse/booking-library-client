@@ -59,7 +59,7 @@ const BookSection = () => {
                 );
               });
             
-              const showAllBooks = location.pathname === "/user-dashboard/books";
+              const showAllBooks = location.pathname === "/user-dashboard/books-buy";
         
         return (
                 <>
