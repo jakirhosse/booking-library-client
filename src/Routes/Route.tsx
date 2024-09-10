@@ -22,6 +22,8 @@ import Profile from "../pages/UserDashboard/Profile/Profile";
 import Statistics from "../pages/AdminDashboard/Statistics/Statistics";
 import UserManage from "../pages/AdminDashboard/UserManage/UserManage";
 import AddUnit from "../pages/AdminDashboard/AddUnit/AddUnit";
+import AllQuestion from "../pages/AdminDashboard/AllQuestion/AllQuestion";
+import AddLesson from "../pages/AdminDashboard/AllQuestion/AddLesson";
 
 
 const router = createBrowserRouter ([
@@ -170,6 +172,26 @@ const router = createBrowserRouter ([
             element: (
             <AddUnit></AddUnit>
             ),
+          },
+
+          {
+            path: "update-question",
+            element: (
+             <AllQuestion></AllQuestion>
+            ),
+          },
+        
+          {
+            path: "add-lesson/:id",
+            element: <AddLesson />,
+            loader: async ({ params }) => {
+              const response = await fetch(`http://localhost:5000/learning-questions/questions/${params.id}`);
+              if (!response.ok) {
+                throw new Error('Network response was not ok');
+              }
+              const data = await response.json();
+              return { data };
+            },
           },
         ]
         }
