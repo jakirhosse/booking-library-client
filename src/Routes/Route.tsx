@@ -24,6 +24,16 @@ import UserManage from "../pages/AdminDashboard/UserManage/UserManage";
 import AddUnit from "../pages/AdminDashboard/AddUnit/AddUnit";
 import AllQuestion from "../pages/AdminDashboard/AllQuestion/AllQuestion";
 import AddLesson from "../pages/AdminDashboard/AllQuestion/AddLesson";
+import AddTopics from "../pages/AdminDashboard/AddTopics";
+import AddAdmin from "../pages/AdminDashboard/AddAdmin";
+import AllPayments from "../pages/AdminDashboard/AllPayments";
+import AllBooks from "../pages/AdminDashboard/AllBooks";
+import AllBuyBook from "../pages/AdminDashboard/AllBuyBook";
+import AddBooks from "../pages/AdminDashboard/AddBooks";
+import Introduction from "../pages/Introduction/Introduction";
+import PrivacyPolicy from "../pages/PrivacyPolicy/PrivacyPolicy";
+import TermsAndCondition from "../pages/TermsAndCondition/TermsAndCondition";
+import PrivateRoute from "./PrivateRoute";
 
 
 const router = createBrowserRouter ([
@@ -56,6 +66,19 @@ const router = createBrowserRouter ([
                         path:"/singleBlogCard/:id",
                         element:<SingleBlogCard></SingleBlogCard>
                 },
+
+                {
+                  path: "/privacy-policy",
+                  element:<PrivacyPolicy></PrivacyPolicy> ,
+                },
+                {
+                  path: "/terms-and-condition",
+                  element: <TermsAndCondition></TermsAndCondition>,
+                },
+                {
+                  path:"/introduction",
+                  element:<Introduction></Introduction>
+                },
                 {
                         path:"/blog",
                         element:<Blogs></Blogs>
@@ -67,7 +90,7 @@ const router = createBrowserRouter ([
       {
         path:"user-dashboard",
         element:(
-                <LernlingLayout></LernlingLayout>
+                <PrivateRoute><LernlingLayout></LernlingLayout></PrivateRoute>
         ),
         children:[
                 {
@@ -167,6 +190,13 @@ const router = createBrowserRouter ([
              <UserManage></UserManage>
             ),
           },
+
+          {
+            path: "add-quize",
+            element: (
+             <AddAdmin></AddAdmin>
+            ),
+          },
           {
             path: "add-unit",
             element: (
@@ -180,7 +210,39 @@ const router = createBrowserRouter ([
              <AllQuestion></AllQuestion>
             ),
           },
-        
+
+          {
+            path: "add-topics",
+            element: (
+             <AddTopics></AddTopics>
+            ),
+          },
+
+          {
+            path: "allPayment",
+            element: (
+             <AllPayments></AllPayments>
+            ),
+          },
+          {
+            path: "all-bought-books",
+            element: (
+              <AllBuyBook></AllBuyBook>
+            ),
+          },
+          {
+            path: "allbooks",
+            element: (
+              <AllBooks></AllBooks>
+            ),
+          },
+
+          {
+            path: "addBook",
+            element: (
+             <AddBooks></AddBooks>
+            ),
+          },
           {
             path: "add-lesson/:id",
             element: <AddLesson />,
