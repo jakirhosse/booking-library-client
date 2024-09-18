@@ -13,13 +13,16 @@ interface CheckoutFormProps {
 }
 
 const CheckoutForm: React.FC<CheckoutFormProps> = ({ closeModal, totalAmountToBePaid, coinAmount }) => {
-  const { user } = useContext(AuthContext);
+  const authContext = useContext(AuthContext);
   const [axiosSecure] = useAxiosSecure();
   const stripe = useStripe();
   const elements = useElements();
   const [cardError, setCardError] = useState<string | undefined>(undefined);
   const [clientSecret, setClientSecret] = useState("");
   const [processing, setProcessing] = useState(false);
+
+  // Ensure authContext is not null before accessing user
+  const user = authContext?.user;
 
   useEffect(() => {
     if (totalAmountToBePaid > 0) {

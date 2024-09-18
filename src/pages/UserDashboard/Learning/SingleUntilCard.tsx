@@ -1,12 +1,28 @@
-import React from 'react';
 import { FaLock, FaUnlock } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import cardBg from "../../../assets/assets/learningCardBg.svg";
 
-const SingleUntilCard = ({ singleUnit, singleUser }) => {
+interface SingleUntilCardProps {
+  singleUnit: {
+    _id: string;
+    unit: string;
+    topic: string;
+    points: number;
+    progress: string;
+    totalLessons: number;
+  };
+  singleUser?: {
+    unit?: string[];
+  };
+}
+
+const SingleUntilCard: React.FC<SingleUntilCardProps> = ({
+  singleUnit,
+  singleUser,
+}) => {
   const { _id, unit, topic, points, progress, totalLessons } = singleUnit;
 
-  const bengaliToEnglishMap = {
+  const bengaliToEnglishMap: { [key: string]: string } = {
     "০": "0",
     "১": "1",
     "২": "2",
@@ -19,7 +35,7 @@ const SingleUntilCard = ({ singleUnit, singleUser }) => {
     "৯": "9",
   };
 
-  const convertBengaliToEnglish = (num) => 
+  const convertBengaliToEnglish = (num: string) =>
     num.split("").map(digit => bengaliToEnglishMap[digit] || digit).join("");
 
   const progressInEnglish = progress ? convertBengaliToEnglish(progress) : "0";

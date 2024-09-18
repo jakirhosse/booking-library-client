@@ -33,11 +33,9 @@ const Introduction = () => {
               <div className="md:flex items-center justify-center">
                 <div className="md:w-1/2">
                   <Lottie
-                    options={{
-                      animationData: learn,
-                      loop: true,
-                      autoplay: true,
-                    }}
+                    animationData={learn}
+                    loop
+                    autoplay
                   />
                 </div>
                 <div className="md:w-1/2">
@@ -47,7 +45,7 @@ const Introduction = () => {
                     in history, by analyzing the learning strategies of millions
                     of people together, we can create the world's most powerful
                     education system and tailor it to the needs of each
-                    student.Our ultimate goal is to enable every student with
+                    student. Our ultimate goal is to enable every student with
                     the help of technology to experience language learning with
                     their own tutor.
                   </p>
@@ -64,11 +62,9 @@ const Introduction = () => {
                 </div>
                 <div className="md:w-1/2">
                   <Lottie
-                    options={{
-                      animationData: learno,
-                      loop: true,
-                      autoplay: true,
-                    }}
+                    animationData={learno}
+                    loop
+                    autoplay
                     height={250}
                   />
                 </div>
@@ -119,11 +115,9 @@ const Introduction = () => {
               <div className="md:flex items-center justify-center">
                 <div className="">
                   <Lottie
-                    options={{
-                      animationData: lear,
-                      loop: true,
-                      autoplay: true,
-                    }}
+                    animationData={lear}
+                    loop
+                    autoplay
                     height={350}
                   />
                 </div>
@@ -141,7 +135,7 @@ const Introduction = () => {
                     Lessons are modeled on real-life tasks such as ordering food
                     at a restaurant. Students learn the vocabulary and grammar
                     needed for this everyday communication by practicing
-                    reading, writing, listening and speaking in a variety of
+                    reading, writing, listening, and speaking in a variety of
                     ways.
                   </p>
                 </div>
@@ -174,14 +168,14 @@ const Introduction = () => {
               className="flex items-center text-sm text-gray-600
             font-semibold justify-center gap-2 my-2"
             >
-              <p>Do you want to contact with us for anything?Send us email</p>
+              <p>Do you want to contact with us for anything? Send us an email</p>
               <p className="underline text-blue-500">abcd@gmail.com</p>
             </div>
             <div
               className="flex items-center text-sm text-gray-600
             font-semibold justify-center"
             >
-              <p>Want to learn english?</p>
+              <p>Want to learn English?</p>
               <Link
                 to="/user-dashboard/learning"
                 className="underline text-blue-500"

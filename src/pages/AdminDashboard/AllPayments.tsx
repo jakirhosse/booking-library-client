@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import {
   Button,
@@ -21,9 +21,9 @@ interface PaymentData {
   transactionId: string;
   date: string;
 }
-const AllPayments = () => {
 
-        const [data, setData] = useState<PaymentData[]>([]);
+const AllPayments = () => {
+  const [data, setData] = useState<PaymentData[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [axiosSecure] = useAxiosSecure();
 
@@ -76,69 +76,64 @@ const AllPayments = () => {
       sortable: false,
       renderCell: (params: any) => (
         <button onClick={() => handleDelete(params.row._id)}>
+          Delete
         </button>
       ),
     },
   ];
 
-        return (
-                <div>
-                {loading ? (
-                <LazyLoder></LazyLoder>
-                ) : (
-                  <div className="px-4 mx-auto py-8 md:px-20 md:py-16">
-                    <Helmet>
-                      <title> All Payment | Admin dashboard | Lang Master </title>
-                    </Helmet>
-                    <SectionTitle
-                      titleLetter="All "
-                      titleWord="Payments History"
-                    ></SectionTitle>
-                    <div className="mt-10 border p-6 rounded-2xl bg-gradient-to-r from-indigo-50 via-purple-50 to-pink-50 ...">
-                      <div className="shadow-2xl bg-white">
-                        <div>
-                          <DataGrid
-                            rows={data}
-                            columns={columns}
-                            // pageSize={5}
-                            checkboxSelection
-                            getRowId={(row) => row._id || row.transactionId || row.email}
-                            initialState={{
-                              pagination: {
-                                paginationModel: { page: 0, pageSize: 5 },
-                              },
-                            }}
-                            pageSizeOptions={[5, 10]}
-                          />
-                        </div>
-          
-                        <div>
-                          <div>
-                            <Dialog
-                              open={deleteConfirmationOpen}
-                              onClose={() => setDeleteConfirmationOpen(false)}
-                            >
-                              <DialogTitle>Confirm Deletion</DialogTitle>
-                              <DialogContent>
-                                <DialogContentText>
-                                  Are you sure you want to delete this item?
-                                </DialogContentText>
-                              </DialogContent>
-                              <DialogActions>
-                                <Button onClick={() => setDeleteConfirmationOpen(false)}>
-                                  Cancel
-                                </Button>
-                                <Button onClick={confirmDelete}>delete</Button>
-                              </DialogActions>
-                            </Dialog>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                )}
+  return (
+    <div>
+      {loading ? (
+        <LazyLoder />
+      ) : (
+        <div className="px-4 mx-auto py-8 md:px-20 md:py-16">
+          <Helmet>
+            <title> All Payment | Admin dashboard | Lang Master </title>
+          </Helmet>
+          <SectionTitle
+            titleLetter="All "
+            titleWord="Payments History"
+          />
+          <div className="mt-10 border p-6 rounded-2xl bg-gradient-to-r from-indigo-50 via-purple-50 to-pink-50 ...">
+            <div className="shadow-2xl bg-white">
+              <div>
+                <DataGrid
+                  rows={data}
+                  columns={columns}
+                  checkboxSelection
+                  getRowId={(row) => row._id || row.transactionId || row.email}
+                  initialState={{
+                    pagination: {
+                      paginationModel: { page: 0, pageSize: 5 },
+                    },
+                  }}
+                  pageSizeOptions={[5, 10]}
+                />
               </div>
-        );
+              <Dialog
+                open={deleteConfirmationOpen}
+                onClose={() => setDeleteConfirmationOpen(false)}
+              >
+                <DialogTitle>Confirm Deletion</DialogTitle>
+                <DialogContent>
+                  <DialogContentText>
+                    Are you sure you want to delete this item?
+                  </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                  <Button onClick={() => setDeleteConfirmationOpen(false)}>
+                    Cancel
+                  </Button>
+                  <Button onClick={confirmDelete}>Delete</Button>
+                </DialogActions>
+              </Dialog>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default AllPayments;

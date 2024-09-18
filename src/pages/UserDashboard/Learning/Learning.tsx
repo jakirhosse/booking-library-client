@@ -7,7 +7,7 @@ import { Helmet } from "react-helmet-async";
 import LazyLoder from "../../../Components/LazyLoder/LazyLoder";
 
 const Learning = () => {
-  const [allLearnData, refetch, isLoading] = uselernData();
+  const [allLearnData, isLoading] = uselernData();
   const [axiosSecure] = useAxiosSecure();
   const { user }: any = useContext(AuthContext);
   const [singleUser, setSingleUser]: any = useState({});
