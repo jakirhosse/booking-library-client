@@ -1,10 +1,10 @@
 import { useEffect, useState, ChangeEvent } from "react";
 import useAxiosSecure from "../../../Hook/useAxiosSecure";
-import { Link, useLocation } from "react-router-dom";
+// import { useLocation } from "react-router-dom";
 
-import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import SingleBook from "./SingleBook";
 import LazyLoder from "../../../Components/LazyLoder/LazyLoder";
+import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 
 type TBook = {
   _id: string; // Changed to string to match the type used in SingleBook
@@ -18,7 +18,7 @@ type TBook = {
 };
 
 const BookSection: React.FC = () => {
-  const location = useLocation();
+  // const location = useLocation();
   const [axiosSecure] = useAxiosSecure();
   const [books, setBooks] = useState<TBook[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -57,7 +57,7 @@ const BookSection: React.FC = () => {
     );
   });
 
-  const showAllBooks = location.pathname === "/user-dashboard/books-buy";
+  // const showAllBooks = location.pathname === "/user-dashboard/books-buy";
 
   return (
     <>
@@ -66,8 +66,10 @@ const BookSection: React.FC = () => {
       ) : (
         <div className="px-4 py-8 md:px-20 md:py-16 mx-auto">
           <div className="flex justify-between mb-8">
-            <SectionTitle>Book Section</SectionTitle>
             <div>
+           <div>
+           <SectionTitle titleWord="Book Section" titleLetter=""></SectionTitle>
+           </div>
               <input
                 type="text"
                 placeholder="Search by book name or writer"
