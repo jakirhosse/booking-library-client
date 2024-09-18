@@ -4,7 +4,7 @@ import useAxiosSecure from '../../Hook/useAxiosSecure';
 import { Helmet } from 'react-helmet-async';
 import SectionTitle from '../../Components/SectionTitle/SectionTitle';
 import useAllBooks from '../../Hook/useAllBooks';
-import deleteIcon from '../../assets/delete-icon.png'; // Ensure this path is correct
+import deleteIcon from '../../assets/assets/person1.jpg'; // Ensure this path is correct
 
 interface Book {
   _id: string;
