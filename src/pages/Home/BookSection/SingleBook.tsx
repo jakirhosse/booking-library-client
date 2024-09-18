@@ -1,4 +1,3 @@
-// src/pages/Home/BookSection/SingleBook.tsx
 import { Fragment, useContext } from "react";
 import useUser from "../../../Hook/useUser";
 import { AuthContext } from "../../../Providers/AuthProvider";
@@ -92,7 +91,7 @@ const SingleBook: React.FC<SingleBookProps> = ({ selectedBook, handleModalClose 
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Dialog.Overlay className="fixed inset-0 bg-black bg-opacity-50" />
+            <Dialog.Panel className="fixed inset-0 bg-black bg-opacity-50" />
           </Transition.Child>
           <Transition.Child
             as={Fragment}
