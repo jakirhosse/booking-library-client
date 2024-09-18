@@ -1,6 +1,5 @@
 
 import { Link } from 'react-router-dom';
-import  './Navbar.css'
 import { useState } from 'react';
 const Navbar = () => {
         const [isOpen, setIsOpen] = useState(false);
@@ -9,10 +8,10 @@ const Navbar = () => {
     setIsOpen(!isOpen);
   };
         return (
-                <nav className="bg-gray-800 p-4">
-                <div className="container mx-auto flex justify-between items-center z-30">
+                <nav className="bg-gray-800 p-4 z-30 sticky top-0">
+                <div className="container mx-auto flex justify-between items-center ">
                   <div className="text-white text-2xl font-bold">
-                    <Link to="/">BrandName</Link>
+                    <Link to="/">BOOK LIBRARY</Link>
                   </div>
                   <div className="hidden md:flex space-x-4">
                     <Link to="/" className="text-white hover:text-gray-300">Home</Link>

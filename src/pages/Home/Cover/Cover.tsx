@@ -26,7 +26,7 @@ interface CoverProps {
 const Cover: React.FC<CoverProps> = () => {
         const { allLeaderBoardData: usersPoint } = useLederBroadData();
         return (
-                <div className="bg-gradient-to-r from-[#95d3a2] to-[#35ac49]">
+                <div className="bg-gradient-to-r from-[#95d3a2] to-[#3557ac] mt-1">
                 <div className="banner md:flex items-center justify-between relative md:py-0 pb-16 md:h-[90vh] md:px-7 gap-20 w-11/12 mx-auto pt-12">
                   <div className="absolute animatespin h-20 w-20 opacity-95 hidden md:block right-10 bottom-32">
                     <img src={shap1} />

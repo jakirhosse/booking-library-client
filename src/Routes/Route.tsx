@@ -34,6 +34,7 @@ import Introduction from "../pages/Introduction/Introduction";
 import PrivacyPolicy from "../pages/PrivacyPolicy/PrivacyPolicy";
 import TermsAndCondition from "../pages/TermsAndCondition/TermsAndCondition";
 import PrivateRoute from "./PrivateRoute";
+import AdminRoute from "./AdminRoute";
 
 
 const router = createBrowserRouter ([
@@ -102,13 +103,13 @@ const router = createBrowserRouter ([
                 {
                         path:"learning/:id",
                         element:(
-                                <LearnLesson></LearnLesson>
+                              <PrivateRoute>  <LearnLesson></LearnLesson></PrivateRoute>
                         )
                 },
                 {
                         path: "leader-board",
                        element:(
-                        <LeaderBoard></LeaderBoard>
+                       <PrivateRoute> <LeaderBoard></LeaderBoard></PrivateRoute>
                        )
                       },
 
@@ -174,47 +175,53 @@ const router = createBrowserRouter ([
 {
         path: "admin-dashboard",
         element: (
-          <AdminDashboardLayout></AdminDashboardLayout>
+        <AdminRoute>
+            <AdminDashboardLayout></AdminDashboardLayout>
+        </AdminRoute>
         ),
         children: [
           {
             path: "statistics",
          element:(
-          <Statistics></Statistics>
+         <AdminRoute>
+           <AdminRoute><Statistics></Statistics></AdminRoute>
+         </AdminRoute>
          )
           },
 
           {
             path: "user-manage",
             element: (
-             <UserManage></UserManage>
+            <AdminRoute>
+               <UserManage></UserManage>
+            </AdminRoute>
             ),
           },
 
           {
             path: "add-quize",
             element: (
-             <AddAdmin></AddAdmin>
+            <AdminRoute> <AddAdmin></AddAdmin></AdminRoute>
             ),
           },
           {
             path: "add-unit",
             element: (
-            <AddUnit></AddUnit>
+           <AdminRoute> <AddUnit></AddUnit></AdminRoute>
             ),
           },
 
           {
             path: "update-question",
             element: (
-             <AllQuestion></AllQuestion>
+            <AdminRoute> <AllQuestion></AllQuestion></AdminRoute>
             ),
           },
 
           {
             path: "add-topics",
             element: (
-             <AddTopics></AddTopics>
+             <AdminRoute><AddTopics></AddTopics></AdminRoute>
             ),
           },
 
@@ -227,20 +234,20 @@ const router = createBrowserRouter ([
           {
             path: "all-bought-books",
             element: (
-              <AllBuyBook></AllBuyBook>
+            <AdminRoute>  <AllBuyBook></AllBuyBook></AdminRoute>
             ),
           },
           {
             path: "allbooks",
             element: (
-              <AllBooks></AllBooks>
+              <AdminRoute><AllBooks></AllBooks></AdminRoute>
             ),
           },
 
           {
             path: "addBook",
             element: (
-             <AddBooks></AddBooks>
+            <AdminRoute> <AddBooks></AddBooks></AdminRoute>
             ),
           },
           {

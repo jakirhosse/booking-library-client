@@ -59,10 +59,7 @@ const Introduction = () => {
                 <div className="md:w-3/4">
                   <h3 className="text-xl font-bold">Let learning be joyful.</h3>
                   <p className="text-gray-600">
-                    Maintaining interest in online language learning is a
-                    difficult task. So, we've made the experience of using
-                    Lang-Master so fun that everyone is more interested in
-                    learning new skills than playing games.
+                   Lorem ipsum dolor sit, amet consectetur adipisicing elit. Atque, esse. Deleniti, repellat tempora. Ex, incidunt ab quibusdam numquam dolorem eaque.
                   </p>
                 </div>
                 <div className="md:w-1/2">
@@ -96,11 +93,7 @@ const Introduction = () => {
                   cost.
                 </p>
                 <p className="my-3 text-gray-600">
-                  From the richest people in the world to many Hollywood stars
-                  use Lang-Master. It is also used in government schools in
-                  various developing countries. We believe that true equality
-                  can only be achieved when there is no need to spend extra to
-                  ensure better education.
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit laboriosam deleniti aliquam. Id, laboriosam. Et rerum architecto laboriosam, praesentium quibusdam incidunt ipsa nesciunt molestiae veniam aspernatur beatae ratione excepturi eum?
                 </p>
               </div>
             </div>
