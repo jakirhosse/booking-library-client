@@ -2,9 +2,10 @@
 import { useEffect, useState, ChangeEvent } from "react";
 import useAxiosSecure from "../../../Hook/useAxiosSecure";
 import { Link, useLocation } from "react-router-dom";
-import LazyLoader from "../../../Components/LazyLoader/LazyLoader"; // Note: Corrected spelling
+
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import SingleBook from "./SingleBook";
+import LazyLoder from "../../../Components/LazyLoder/LazyLoder";
 
 type TBook = {
   _id: number;
@@ -62,7 +63,7 @@ const BookSection: React.FC = () => {
   return (
     <>
       {books.length <= 0 ? (
-        <LazyLoader />
+        <LazyLoder></LazyLoder>
       ) : (
         <div className="px-4 py-8 md:px-20 md:py-16 mx-auto">
           <div className="flex flex-col items-center">

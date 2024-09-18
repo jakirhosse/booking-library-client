@@ -4,7 +4,6 @@ import { AuthContext } from "../../../Providers/AuthProvider";
 import useAxiosSecure from "../../../Hook/useAxiosSecure";
 import toast from "react-hot-toast";
 import { FaCoins, FaEdit } from "react-icons/fa";
-import { Link } from "react-router-dom";
 import { ImLocation2 } from "react-icons/im";
 import { MdEmail } from "react-icons/md";
 import { BsTelephone } from "react-icons/bs";
