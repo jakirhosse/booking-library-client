@@ -1,9 +1,10 @@
-import Swal from "sweetalert2";
-import useAxiosSecure from "../../Hook/useAxiosSecure";
-import { Helmet } from "react-helmet-async";
-import SectionTitle from "../../Components/SectionTitle/SectionTitle";
-import useAllBooks from "../../Hook/useAllBooks";
-import deleteIcon from "../../assets/delete-icon.png"; // Ensure this path is correct
+// src/pages/AdminDashboard/AllBooks.tsx
+import Swal from 'sweetalert2';
+import useAxiosSecure from '../../Hook/useAxiosSecure';
+import { Helmet } from 'react-helmet-async';
+import SectionTitle from '../../Components/SectionTitle/SectionTitle';
+import useAllBooks from '../../Hook/useAllBooks';
+import deleteIcon from '../../assets/delete-icon.png'; // Ensure this path is correct
 
 interface Book {
   _id: string;
@@ -13,18 +14,18 @@ interface Book {
 }
 
 const AllBooks = () => {
-  const [allBooks, refetch] = useAllBooks();
+  const [allBooks, refetch, isLoading] = useAllBooks();
   const [axiosSecure] = useAxiosSecure();
 
   const handleDeleteBook = (id: string) => {
     Swal.fire({
-      title: "Are you sure?",
+      title: 'Are you sure?',
       text: "You won't be able to revert this!",
-      icon: "warning",
+      icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
         axiosSecure
@@ -32,16 +33,18 @@ const AllBooks = () => {
           .then((response) => response.data)
           .then((data) => {
             if (data.deletedCount > 0) {
-              Swal.fire("Deleted!", "Your file has been deleted.", "success");
-              refetch();
+              Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
+              refetch(); // Refetch data to update the list
             }
           })
           .catch((error) => {
-            console.error("Error deleting book:", error);
+            console.error('Error deleting book:', error);
           });
       }
     });
   };
+
+  if (isLoading) return <p>Loading...</p>; // Handle loading state
 
   return (
     <div className="px-4 py-8 md:px-20 md:py-16">

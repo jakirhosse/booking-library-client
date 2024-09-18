@@ -4,7 +4,8 @@ import Swal from 'sweetalert2';
 import { Helmet } from 'react-helmet-async';
 import useAxiosSecure from '../../../Hook/useAxiosSecure';
 import uselernData from '../../../Hook/useLernData/uselernData';
-import SectionTitle from '../../../components/SectionTitle'; // Adjust the import path if necessary
+import SectionTitle from '../../../Components/SectionTitle/SectionTitle';
+
 
 interface Lesson {
   lessonNumber: string;
@@ -145,7 +146,7 @@ function AddUnit() {
       </Helmet>
 
       <div className="px-4 py-8 md:px-20 md:py-16">
-        <SectionTitle titleLetter="Add " titleWord="Units" />
+        <SectionTitle titleLetter="Add " titleWord="Units"></SectionTitle>
         <form onSubmit={handleSubmit} className="mt-10">
           <div className="md:flex justify-evenly gap-2">
             <input
